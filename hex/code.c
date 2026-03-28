@@ -32,6 +32,7 @@ asm volatile ("sw x2,0(x0)");
 asm volatile ("sw x3,4(x0)");
 asm volatile ("lw x5,-8(x1)");
 asm volatile ("sll x5,x2,x4");
+asm volatile ("_addi:      ");
 asm volatile ("addi x3,x2,1");
 asm volatile ("or x2,x3,x0");
 asm volatile ("bne x3,x5,_addi");
@@ -42,7 +43,6 @@ asm volatile ("jal x0,_jtest");
 asm volatile ("ori x0,x1,0");
 asm volatile ("ori x0,x1,0");
 asm volatile ("ori x0,x1,0");
-
-_jtest:
-asm volatile ("lw x4,4(x29)");
+asm volatile ("_jtest:     ");
+asm volatile ("lw x28,4(x29)");
 }
