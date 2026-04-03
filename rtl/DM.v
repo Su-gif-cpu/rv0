@@ -1,19 +1,24 @@
-`include "ctrl_signal_def.v"
+`include "includes/ctrl_signal_def.v"
+// 写同步、读组合：与 load 同周期可旁路 RD，缩短信赖 load 的停顿（端口未改）。
 module DM( Addr, WD, clk, DMCtrl, RD);
-    input  [11:2] Addr;             //读写对应的地址
-    input  [31:0] WD;               //写入的数据
-    input  clk;                     //时钟信号
-    input DMCtrl;                   //读写控制信号
-    output reg [31:0] RD;           //读出的数据
+    input  [11:2] Addr;
+    input  [31:0] WD;
+    input  clk;
+    input DMCtrl;
+    output reg [31:0] RD;
 
     reg [31:0] memory[0:1023];
-    always @(posedge clk) begin //信号上升沿
-        if (DMCtrl) begin
-            memory[Addr] <= WD;     //写入数据
-        end
-        else begin
-            RD <= memory[Addr];     //读出数据
-        end
-    end // end always
+
+    always @(posedge clk) begin
+        if (DMCtrl)
+            memory[Addr] <= WD;
+    end
+
+    always @(*) begin
+        if (DMCtrl)
+            RD = 32'h0000_0000;
+        else
+            RD = memory[Addr];
+    end
 
 endmodule

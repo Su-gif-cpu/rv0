@@ -1,4 +1,4 @@
-`include "ctrl_signal_def.v"
+`include "includes/ctrl_signal_def.v"
 module MUX_3to1(X, Y, Z, control, out);
     input [4:0] X;      //rd
     input [4:0] Y;      //预留输入

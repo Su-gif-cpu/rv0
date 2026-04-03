@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "ctrl_signal_def.v"
+`include "includes/ctrl_signal_def.v"
 module MUX_3to1_LMD(X, Y, Z, control, out);
     input [31:0] X;             //临时寄存器ALU0中的内容
     input [31:0] Y;             //临时寄存器LMD中的内容
@@ -31,7 +31,8 @@ module MUX_3to1_LMD(X, Y, Z, control, out);
         case(control)
             `WDSel_FromALU : out = X;      //选择X
             `WDSel_FromMEM : out = Y;      //选择Y
-            `WDSel_FromPC  : out = Z;      //选择Z
+            // Z 为 PC+4[31:2]，低 2 位恒为 0；禁止将 30 位总线零扩展到 32 位以免抹掉 PC 高位
+            `WDSel_FromPC  : out = {Z, 2'b00};
             `WDSel_Else    : out = 0;
         endcase
     end

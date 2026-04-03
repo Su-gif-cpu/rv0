@@ -1,4 +1,4 @@
-`include "ctrl_signal_def.v"
+`include "includes/ctrl_signal_def.v"
 module MUX_2to1_A(X, Y, control, out);
     input [31:0] X;             //临时寄存器A中的内容
     input [4:0] Y;              //预留输入
