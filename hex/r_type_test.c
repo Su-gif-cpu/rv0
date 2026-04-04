@@ -19,7 +19,7 @@ int main()
     asm volatile ("sra x12, x3, x4");  // x12 = x3 >>> x4 = 15 >>> 2 = 3 (since positive)
 
     // Additional tests
-    asm volatile ("ori x15, x0, -8");  // x15 = -8
+    asm volatile ("addi x15, x0, -8");  // x15 = -8
     asm volatile ("sra x16, x15, x4"); // x16 = x15 >>> x4 = -8 >>> 2 = -2
 
     // Loop to halt (infinite loop)
