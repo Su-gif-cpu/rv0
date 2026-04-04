@@ -1,5 +1,5 @@
-`include "includes/global_def.v"
-`include "includes/ctrl_signal_def.v"
+`include "global_def.v"
+`include "ctrl_signal_def.v"
 
 module RF(
     input [4:0] RR1,        // 读取寄存器1地址

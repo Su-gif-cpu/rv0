@@ -1,4 +1,4 @@
-`include "includes/ctrl_signal_def.v"
+`include "ctrl_signal_def.v"
 module Flopr(clk, rst, in_data, out_data );
     input clk;                      //时钟信号
     input rst;                      //复位信号

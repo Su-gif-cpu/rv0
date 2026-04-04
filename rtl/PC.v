@@ -18,7 +18,7 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-`include "includes/ctrl_signal_def.v"
+`include "ctrl_signal_def.v"
 module PC(clk, rst, PCWrite, NPC, PC);
     input clk;              //时钟信号
     input rst;              //复位信号

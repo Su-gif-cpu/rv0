@@ -1,5 +1,5 @@
-`include "includes/ctrl_signal_def.v"
-`include "includes/instruction_def.v"
+`include "ctrl_signal_def.v"
+`include "instruction_def.v"
 module NPC(NPCOp, Offset12, Offset20, PC, rs, PCA4, NPC);
     input [1:0] NPCOp;      //控制信号
     input [12:1] Offset12;  //比较指令的跳转偏移量

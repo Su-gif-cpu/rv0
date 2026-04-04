@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "includes/ctrl_signal_def.v"
+`include "ctrl_signal_def.v"
 module IM(InsMemRW, addr, Ins);
     input               InsMemRW;       //指令存储单元信号
     input       [11:2]  addr;           //指令存储器地址

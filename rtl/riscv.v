@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-`include "includes/instruction_def.v"
-`include "includes/ctrl_signal_def.v"
+`include "instruction_def.v"
+`include "ctrl_signal_def.v"
 
 // 五级流水线 IF-ID-EX-MEM-WB：load-use 停顿；EX 级 jal/jalr/后备分支；beq/bne 在 ID 提前判定减惩罚。子模块端口与实例数不变。
 module riscv(clk, rst);

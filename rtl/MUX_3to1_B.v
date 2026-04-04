@@ -1,4 +1,4 @@
-`include "includes/ctrl_signal_def.v"
+`include "ctrl_signal_def.v"
 module MUX_3to1_B(X, Y, Z, control, out);
     input [31:0] X;     //临时寄存器B中的内容
     input [31:0] Y;     //临时寄存器Imm中的内容
