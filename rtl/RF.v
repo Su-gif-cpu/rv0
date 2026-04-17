@@ -14,11 +14,9 @@ module RF(
 
     reg [31:0] register [0:31]; // 32个32位寄存器
 
-    always @(clk) begin
-        register[0] = 32'h0; // X0寄存器，硬件0，对X0的写入将被忽略
-    end
-
+    // Bug RF1 修复：x0 每周期强制清零
     always @(posedge clk) begin
+        register[0] <= 32'h0;  // x0 恒为 0
         // 在上升沿时钟信号时，如果写入寄存器地址不为0且写使能信号为1，则写入数据到指定寄存器
         if ((WR != 0) && (RFWrite == 1)) begin
             register[WR] <= WD;
@@ -32,7 +30,7 @@ module RF(
         end
     end
 
-    // 如果读取寄存器
+    // 异步读，无 MUX（x0 由同步逻辑保证恒为 0）
     assign RD1 = register[RR1];
     assign RD2 = register[RR2];
 
